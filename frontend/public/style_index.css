@@ -1,0 +1,31 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.slider {
+    width: 100%;
+    background-color: #d3d3d3;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.slide-track {
+    display: flex;
+    animation: scroll 10s linear infinite;
+}
+
+.slide {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 20px;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
