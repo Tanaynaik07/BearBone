@@ -1,33 +1,29 @@
-import logo from './logo.svg';
-import { Routes, Route } from "react-router-dom";
-import './App.css';
-import Home from './pages/Home';
-import ProductPage from './pages/ProductPage';
-function App() {
-  return (
-    
-    <div className="App">
-       <Routes>
-       <Route path={"/"} element={<Home/>}/>
-       <Route path={"/product-page"} element={<ProductPage/>}/>
-  
+import React, { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import "./App.css";
+import Home from "./pages/Home";
+import ProductPage from "./pages/ProductPage";
+import Sidebar from "./components/Sidebar";
+import Navbar from "./components/Navbar";
 
-       </Routes>
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+function App() {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
+
+  return (
+    <Router>
+      <div className="App">
+        <Sidebar isOpen={isSidebarOpen} />
+        <Navbar toggleSidebar={toggleSidebar} />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/product-page" element={<ProductPage />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
